@@ -55,6 +55,45 @@ public class CardStack : MonoBehaviour
         cards.Add(card);
     }
 
+    public int HandValue()
+    {
+        int total = 0;
+        int aces = 0;
+
+        foreach(int card in GetCards())
+        {
+            int cardRank = card % 13;
+
+            if (cardRank <=8)
+            {
+                cardRank += 2;
+                total = total + cardRank;
+            }
+            else if (cardRank > 8 && cardRank < 12)
+            {
+                cardRank = 10;
+                total = total + cardRank;
+            }
+            else
+            {
+                aces++;
+            }
+        }
+
+        for (int i = 0; i < aces; i++)
+        {
+            if(total + 11 <= 21)
+            {
+                total = total + 11;
+            }
+            else
+            {
+                total = total + 1;
+            }
+        }
+        return total;
+    }
+
     public void CreateDeck()
     {
             cards.Clear();

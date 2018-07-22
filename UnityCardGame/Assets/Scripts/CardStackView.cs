@@ -87,5 +87,7 @@ public class CardStackView : MonoBehaviour
         spriteRenderer.sortingOrder = positionIndex;
         }
         fetchedCards.Add(cardIndex, cardCopy);
+
+        Debug.Log("Hand Value = " + deck.HandValue());
     }
 }
