@@ -6,6 +6,14 @@ public class Deck : MonoBehaviour
 {
     List<int> cards;
 
+    public IEnumerable<int> GetCards()
+    {
+        foreach(int i in cards)
+        {
+            yield return i;
+        }
+    }
+
     public void Shuffle()
     {
         if (cards == null)
